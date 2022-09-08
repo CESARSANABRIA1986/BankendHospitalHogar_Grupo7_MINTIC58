@@ -6,5 +6,5 @@ CREATE TABLE signoVitales(
 	temperatura INTEGER not NULL,
 	presionArterial INTEGER not NULL,
 	glicemia INTEGER not NULL,
-	fechaHoraSignosVitales DATA not NULL
+	fechaHoraSignosVitales date
 );
