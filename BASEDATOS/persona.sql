@@ -13,3 +13,11 @@ create table persona(
 	contraseña VARCHAR(16) not null,
 	FOREIGN KEY(idTipoPersonas) REFERENCES tipoPersona(idTipoPersona)
 );
+
+INSERT INTO persona  (cedula, primernombre, segundonombre, primerapellido, segundoapellido, telefono, pais, departamento, municipio,
+barrio, idtipopersonas, contraseña) values (1098622901, 'cesar', 'augusto', 'sanabria',
+'casanova', '3102857230', 'Colombia', 'Santander','Floridablanca', 'Rosales', 1, 'cesar1986') ;
+
+INSERT INTO persona  (cedula, primernombre, segundonombre, primerapellido, segundoapellido, telefono, pais, departamento, municipio,
+barrio, idtipopersonas, contraseña) values (63310789, 'glady', '', 'casanova',
+'cuadros', '3118543049', 'Colombia', 'Santander','Bucaramanga', 'Giron', 1, 'Gladys1964') ;
