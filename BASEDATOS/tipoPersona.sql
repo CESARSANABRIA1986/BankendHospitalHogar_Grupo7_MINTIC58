@@ -1,10 +1,8 @@
 CREATE TABLE tipoPersona(
-idTipoPersona SERIAl PRIMARY KEY not null,
+idTipoPersona INTEGER PRIMARY KEY not null,
 tipoPersona VARCHAR (50) not null
 );
-INSERT INTO tipopersona(tipopersona) VALUES ('MEDICO');
-INSERT INTO tipopersona(tipopersona) VALUES ('PACIENTE');
-INSERT INTO tipopersona(tipopersona) VALUES ('ACUDIENTE');
-
-
-SELECT * FROM tipopersona;
+INSERT INTO tipopersona (idtipopersona, tipopersona) values (1, 'Medico') ;
+INSERT INTO tipopersona (idtipopersona, tipopersona) values (2, 'Paciente');
+INSERT INTO tipopersona (idtipopersona, tipopersona) values (3, 'Acudiente');
+select * from tipopersona;

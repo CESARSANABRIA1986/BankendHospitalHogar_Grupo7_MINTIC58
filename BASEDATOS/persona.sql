@@ -10,7 +10,6 @@ create table persona(
 	municipio VARCHAR(30),
 	barrio VARCHAR(30),
 	idTipoPersonas INTEGER, 
-	idHospitalizaciones INTEGER,
-	FOREIGN KEY(idTipoPersonas) REFERENCES tipoPersona(idTipoPersona),
-	FOREIGN KEY(idHospitalizaciones) REFERENCES hospitalizacion (idHospitalizacion)
+	contraseña VARCHAR(16) not null,
+	FOREIGN KEY(idTipoPersonas) REFERENCES tipoPersona(idTipoPersona)
 );
