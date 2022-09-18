@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
+from pickle import FALSE
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,8 +79,13 @@ WSGI_APPLICATION = 'hospitalizacionHogar.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'deim2kselms1dc',
+        'USER': 'owgafaveybhmsr',
+        'PASSWORD': '6e8357b65c10f85df94c30878f11fd0e70225b5c6729fc5bc5c47181406dcf0d',
+        'HOST': 'ec2-44-205-63-142.compute-1.amazonaws.com',
+        'URI': 'postgres://owgafaveybhmsr:6e8357b65c10f85df94c30878f11fd0e70225b5c6729fc5bc5c47181406dcf0d@ec2-44-205-63-142.compute-1.amazonaws.com:5432/deim2kselms1dc',
+        'PORT': '5432',
     }
 }
 
@@ -123,3 +130,26 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK ={
+    'DEFAULT_PERMISSION_CLASSES' : (
+        'rest_framework.permission.AllowAny',
+    ),
+    'DEFAULT_AUTHETICATION_CLASSES':(
+        'rest_framework _simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+SIMPLE_JWT = {
+    'ACCES_TOKEN_LIFETIME': timedelta(minutes=10),
+    'REFRESH_TOKEN_LIFETIME':timedelta(minutes=10),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN':False,
+
+    'ALGORITHM': 'HS256',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+}
+ 
