@@ -81,15 +81,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'deim2kselms1dc',
+        'HOST': 'ec2-44-205-63-142.compute-1.amazonaws.com',
         'USER': 'owgafaveybhmsr',
         'PASSWORD': '6e8357b65c10f85df94c30878f11fd0e70225b5c6729fc5bc5c47181406dcf0d',
-        'HOST': 'ec2-44-205-63-142.compute-1.amazonaws.com',
-        'URI': 'postgres://owgafaveybhmsr:6e8357b65c10f85df94c30878f11fd0e70225b5c6729fc5bc5c47181406dcf0d@ec2-44-205-63-142.compute-1.amazonaws.com:5432/deim2kselms1dc',
-        'PORT': '5432',
+        'PORT': '5432', 
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
