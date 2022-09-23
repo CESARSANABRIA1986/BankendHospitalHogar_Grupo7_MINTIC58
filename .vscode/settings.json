@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "ciclo3HospitalHogar",
+            "database": "hospitalhogarciclo3",
+            "username": "postgres",
+            "password": "CoYoTe6827/*-+"
+        }
+    ]
+}

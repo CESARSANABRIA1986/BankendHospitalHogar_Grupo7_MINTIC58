@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'hospitalizacionHogarCiclo3App'
+    'authApp',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'hospitalizacionHogarCiclo3.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hospitalHogar',
+        'NAME': 'hospitalhogarciclo3',
         'USER':'postgres',
         'PASSWORD':'CoYoTe6827/*-+',
         'HOST': 'localhost',
@@ -140,18 +140,19 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHETICATION_CLASSES':{
         'rest_framework_simplejwt.autentication.JWTAuthentication',
     }
-
 }
 
 
-SIMPLE_JWT={
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
-    'REFRESH_TOKEN_LIFE': timedelta(days=1),
-    'ROTATE_REFRESH_TOKEN': False,
-    'BLACKLIST_AFTER_ROTATION':True,
-    'UPDATE_LAST_LOGIN': False,
+#AUTH_USER_MODEL = 'authApp.Persona'
 
-    'ALGORITHM': 'HS256',
-    'USER_ID_FIELD': 'id',
-    'USER_ID_CLAIM':  'user_id',
-} 
+#SIMPLE_JWT={
+#    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+#    'REFRESH_TOKEN_LIFE': timedelta(days=1),
+#    'ROTATE_REFRESH_TOKEN': False,
+#    'BLACKLIST_AFTER_ROTATION':True,
+#    'UPDATE_LAST_LOGIN': False,
+#
+#    'ALGORITHM': 'HS256',
+#    'USER_ID_FIELD': 'id',
+#    'USER_ID_CLAIM':  'user_id',
+#}

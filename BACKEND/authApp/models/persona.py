@@ -1,13 +1,33 @@
-import email
-from ssl import _PasswordType
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.hashers import make_password
 
-from BACKEND.hospitalizacionHogarCiclo3App.models.tipoPersonas import tipoPersona
+from .tipoPersona import TipoPersona
 
 
-class persona(abstractBaseUser, PermissionsMixin):
+class UserManager(BaseUserManager):
+    def create_user(self, username, password=None):
+
+        if not username:
+            raise ValueError('User must have an username')
+        username = self.model(username=username)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, username, password):
+        user = self.create_user(
+            username=username,
+            password=password,
+        )
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
+
+        
+class Persona(abstractBaseUser, PermissionsMixin):
     id                  =   models.BigAutoField(primary_key=True)
-    tipoUsuario         =   models.ForeignKey(tipoPersona, related_name='tipoUsuario_id', on_delete=models.CASCADE)
+    tipoUsuario         =   models.ForeignKey(tipoPersona, related_name='idTipoPersona', on_delete=models.CASCADE)
     password            =   models.CharField('Password', max_length=256)
     primerNombre        =   models.CharField('PrimerNombre', max_length=50)
     segundoNombre       =   models.CharField('SegundoNombre', max_length=50)
@@ -17,6 +37,7 @@ class persona(abstractBaseUser, PermissionsMixin):
     pais                =   models.CharField('Pais', max_length=100)
     departamento        =   models.CharField('Departamento', max_length=100)
     municipio           =   models.CharField('Municipio', max_length=100)
+    barrio              =   models.CharField('Barrio', max_length=256)
     direccion           =   models.CharField('Direccion', max_length=256)    
     email               =   models.EmailField('Email', max_length=120, unique=True)
 
@@ -24,9 +45,6 @@ class persona(abstractBaseUser, PermissionsMixin):
         some_salt       =   'mMj0DrIK7vgTdIYwpkIxN'
         self.password   =   make_password(self.password, some_salt)
         super().save(**kwargs)
-        object = UserManager()
-    
+
+    object = UserManager()
     USERNAME_FIELD = 'email'
-
-
-
