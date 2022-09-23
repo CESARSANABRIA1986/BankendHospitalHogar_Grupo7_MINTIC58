@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'hospitalizacionHogarCiclo3.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'hospitalHogar',
         'USER':'postgres',
         'PASSWORD':'CoYoTe6827/*-+',
         'HOST': 'localhost',
