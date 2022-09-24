@@ -1,13 +1,13 @@
+from logging import RootLogger
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.contrib.auth.hashers import make_password
 
-from .tipoPersona import TipoPersona
+from .Rol import Rol
 
 
 class UserManager(BaseUserManager):
     def create_user(self, username, password=None):
-
         if not username:
             raise ValueError('User must have an username')
         username = self.model(username=username)
@@ -25,9 +25,9 @@ class UserManager(BaseUserManager):
         return user
 
         
-class Persona(abstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin):
     id                  =   models.BigAutoField(primary_key=True)
-    tipoUsuario         =   models.ForeignKey(tipoPersona, related_name='idTipoPersona', on_delete=models.CASCADE)
+    Rol                 =   models.ForeignKey(Rol, related_name='rol_id', on_delete=models.CASCADE)
     password            =   models.CharField('Password', max_length=256)
     primerNombre        =   models.CharField('PrimerNombre', max_length=50)
     segundoNombre       =   models.CharField('SegundoNombre', max_length=50)

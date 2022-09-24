@@ -1,6 +1,6 @@
 from django.contrib import admin
-#from models.persona import Persona
-#from models.tipoPersona import TipoPersona
+from .models.User import User
+from .models.Account import Account
 
-#admin.site.register(Persona)
-#admin.site.register(TipoPersona)
+admin.site.register(User)
+admin.site.register(Account)

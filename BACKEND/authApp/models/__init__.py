@@ -1,2 +1,3 @@
-#from .persona import Persona
-#from .tipoPersona import TipoPersona
+from .Account import Account
+from .User import User
+from .Rol import Rol
