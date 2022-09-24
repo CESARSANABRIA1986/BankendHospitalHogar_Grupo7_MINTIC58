@@ -27,6 +27,7 @@ class UserManager(BaseUserManager):
         
 class User(AbstractBaseUser, PermissionsMixin):
     id                  =   models.BigAutoField(primary_key=True)
+    username             =  models.CharField('Username', max_length=25, unique=True)
     Rol                 =   models.ForeignKey(Rol, related_name='rol_id', on_delete=models.CASCADE)
     password            =   models.CharField('Password', max_length=256)
     primerNombre        =   models.CharField('PrimerNombre', max_length=50)
@@ -39,7 +40,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     municipio           =   models.CharField('Municipio', max_length=100)
     barrio              =   models.CharField('Barrio', max_length=256)
     direccion           =   models.CharField('Direccion', max_length=256)    
-    email               =   models.EmailField('Email', max_length=120, unique=True)
+    email               =   models.EmailField('Email', max_length=200)
 
     def save(self, **kwargs):
         some_salt       =   'mMj0DrIK7vgTdIYwpkIxN'
@@ -47,4 +48,4 @@ class User(AbstractBaseUser, PermissionsMixin):
         super().save(**kwargs)
 
     object = UserManager()
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
