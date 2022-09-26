@@ -5,7 +5,6 @@ from django.contrib.auth.hashers import make_password
 
 from .Rol import Rol
 
-
 class UserManager(BaseUserManager):
     def create_user(self, username, password=None):
         if not username:
@@ -40,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     municipio           =   models.CharField('Municipio', max_length=100)
     barrio              =   models.CharField('Barrio', max_length=256)
     direccion           =   models.CharField('Direccion', max_length=256)    
-    email               =   models.EmailField('Email', max_length=200)
+    email               =   models.EmailField('Email', max_length=250)
 
     def save(self, **kwargs):
         some_salt       =   'mMj0DrIK7vgTdIYwpkIxN'
