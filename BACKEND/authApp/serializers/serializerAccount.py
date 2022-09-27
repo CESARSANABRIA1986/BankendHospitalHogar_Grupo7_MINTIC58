@@ -3,7 +3,7 @@ from pyexpat import model
 from authApp.models.Account import Account
 from rest_framework import serializers
 
-class SerializadorCuenta(serializers.ModelSerializer):
+class SerializadorAccount(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ['balance','description']
+        fields = ['especializacion','fechaIngreso', 'descripcion']
