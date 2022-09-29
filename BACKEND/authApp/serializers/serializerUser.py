@@ -1,15 +1,15 @@
 from rest_framework import serializers
 from authApp.models.User import User
 from authApp.models.Account import Account
+from authApp.models.Rol import Rol
 
 
 from authApp.serializers.serializerAccount import SerializadorAccount
-from authApp.models import Account
+from authApp.serializers.serializerRol import SerializadorRol
 
 from drf_writable_nested import WritableNestedModelSerializer
 
 from setuptools.config._validate_pyproject.fastjsonschema_validations import validate
-
 
 
 class SerializadorUser(WritableNestedModelSerializer, serializers.ModelSerializer):
@@ -17,7 +17,9 @@ class SerializadorUser(WritableNestedModelSerializer, serializers.ModelSerialize
 
     class Meta:
         model = User
-        fields = ['id','username','password','primerNombre','email','account']
+        model = Rol
+
+        fields = ['id','username','password', 'rol', 'password','primerNombre','segundoNombre', 'primerApellido', 'segundoApellido','celular','pais', 'departamento','municipio','barrio','direccion', 'email','account']
 
         def create(self, validated_data):
             accountData = validated_data.pop('account')
@@ -28,14 +30,24 @@ class SerializadorUser(WritableNestedModelSerializer, serializers.ModelSerialize
         def to_representation(self, obj):
             user = User.objects.get(id=obj.id)
             account = Account.objects.get(user = obj.id)
+            rol = Rol.objects.get(user=obj.id)
             return {
                 "id": user.id,
                 "username" : user.username,
-                "name": user.primerNombre,
+                "password": user.password,
+                "rol":{
+                    "idRol":rol.IdRol,
+                    "tipoUsuario": rol.tipoUsuario,
+                },
+                "primerNombre":user.primerNombre,
+                "segundoNombre":user.segundoNombre,
+                "primerApellido":user.primerApellido,
+                "segundoApellido":user.segundoApellido,
                 "email": user.email,
-                "account" :{
+                "account":{
                     "id": account.id,
                     "especializacion": account.especializacion,
-                    "description": account.description
+                    "fechaIngreso": account.fechaIngreso,
+                    "description": account.descripcion,
                 }
             }

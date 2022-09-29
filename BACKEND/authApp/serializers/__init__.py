@@ -1,2 +1,3 @@
 from .serializerAccount import SerializadorAccount
-from .serializerUser import SerializadorUserc
+from .serializerUser import SerializadorUser
+from .serializerRol import SerializadorRol

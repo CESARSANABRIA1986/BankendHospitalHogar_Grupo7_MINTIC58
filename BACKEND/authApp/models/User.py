@@ -25,9 +25,9 @@ class UserManager(BaseUserManager):
 
         
 class User(AbstractBaseUser, PermissionsMixin):
-    id                  =   models.BigAutoField(primary_key=True)
-    username             =  models.CharField('Username', max_length=25, unique=True)
-    Rol                 =   models.ForeignKey(Rol, related_name='rol_id', on_delete=models.CASCADE)
+    id                  =   models.IntegerField('id', primary_key=True)
+    username            =   models.CharField('Username', max_length=50, unique=True)
+    rol                 =   models.ForeignKey(Rol, related_name='id_Rol', on_delete=models.CASCADE)
     password            =   models.CharField('Password', max_length=256)
     primerNombre        =   models.CharField('PrimerNombre', max_length=50)
     segundoNombre       =   models.CharField('SegundoNombre', max_length=50)
