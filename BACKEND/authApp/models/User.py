@@ -3,10 +3,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.contrib.auth.hashers import make_password
 
-from .Rol import Rol
 
 class UserManager(BaseUserManager):
     def create_user(self, username, password=None):
+
         if not username:
             raise ValueError('User must have an username')
         user = self.model(username=username)
@@ -26,8 +26,7 @@ class UserManager(BaseUserManager):
         
 class User(AbstractBaseUser, PermissionsMixin):
     id                  =   models.IntegerField('id', primary_key=True)
-    username            =   models.CharField('Username', max_length=50, unique=True)
-    rol                 =   models.ForeignKey(Rol, related_name='id_Rol', on_delete=models.CASCADE)
+    username            =   models.CharField('username', max_length=50, unique=True)
     password            =   models.CharField('Password', max_length=256)
     primerNombre        =   models.CharField('PrimerNombre', max_length=50)
     segundoNombre       =   models.CharField('SegundoNombre', max_length=50)
@@ -42,7 +41,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email               =   models.EmailField('Email', max_length=250)
 
     def save(self, **kwargs):
-        some_salt       =   'mMj0DrIK7vgTdIYwpkIxN'
+        some_salt       =   'mMUj0DrIK6vgtdIYepkIxN'
         self.password   =   make_password(self.password, some_salt)
         super().save(**kwargs)
 
