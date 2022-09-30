@@ -30,6 +30,6 @@ urlpatterns = [
     path('login/', TokenObtainPairView.as_view()),
     path('renovar/', TokenRefreshView.as_view()),
     path('usuario/', views.UserCreateView.as_view()),
-    path('usuario/<int:pk>/', views.UserDetailView.as_view()),
-    path('rol/', views.RolCreateView.as_view())
+    path('usuario/<int:pk>/', views.UserDetailView.as_view()), # vista para ver detalles
+    path('rol/', views.RolCreateView.as_view()) #vista para crear rol
 ]
