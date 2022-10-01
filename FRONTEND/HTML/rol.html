@@ -4,9 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rol</title>
+    <title>Rol Usuario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap/js/bootstrap.min.js">
+    <link rel="stylesheet" href="./general.css">
+
 </head>
+
 <body>
+    
+    <section class="form-register1">
+
+        <h3> Rol Usuario</h3>
+
+        <input class="controls" type="text" name="identificacion" id="identificacion" placeholder="Identificacion" >
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Rol</label>
+            <select class="form-select" id="rol">
+              <option selected>Rol</option>
+              <option value="1">Medico</option>
+              <option value="2">Auxiliar</option>
+              <option value="3">Administrativo</option>
+              <option value="4">Pacienter</option>
+              <option value="5">Acudiente</option>
+            </select>
+        </div>
+        
+        <div class="new-button">
+            <button type="button" class="btn btn-danger">GUARDAR</button>
+            <button type="button" class="btn btn-success">ELIMINAR</button>
+        </div>
+
+    </section>
+
+
+
     
 </body>
 </html>
