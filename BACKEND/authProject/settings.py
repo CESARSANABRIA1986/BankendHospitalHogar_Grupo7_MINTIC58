@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = 'django-insecure-u33f+5b^%+x8@&%3zooqw3+sd%mvh7h!zluaobiooloi61@x#l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'authApp',
+    'corsheaders',
 ]
 
 
@@ -64,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', 
 ]
 
 
@@ -78,6 +81,16 @@ REST_FRAMEWORK = {
 
 
 AUTH_USER_MODEL = 'authApp.User'
+
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhot:7878',
+    'http://www.front.aws.com',
+)
+
 
 
 ROOT_URLCONF = 'authProject.urls'
