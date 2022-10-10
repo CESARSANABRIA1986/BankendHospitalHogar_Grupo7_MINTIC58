@@ -47,7 +47,6 @@ class SerializadorUser(WritableNestedModelSerializer, serializers.ModelSerialize
                 "account":{
                     "id": account.id,
                     "especializacion": account.especializacion,
-                    "fechaIngreso": account.fechaIngreso,
                     "descripcion": account.descripcion,
                 }
             }

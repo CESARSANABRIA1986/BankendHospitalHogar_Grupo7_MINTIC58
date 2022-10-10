@@ -8,9 +8,7 @@
             </span>
         </form>
         <div class="button">
-                <button v-if="is_auth" v-on:click="loadSingUp"   type="submit" class="btn btn-primary">LOGIN</button>
-                <button v-if="!is_auth"  v-on:click="loadSingUp"   type="button" class="btn btn-primary">CREAR</button>
-                <button v-if="!is_auth"   v-on:click="logOut"      type="button" class="btn btn-danger">SALIR</button>
+                <button v-if="!is_auth"   v-on:click="logOut" type="button" class="btn btn-danger">SALIR</button>
         </div>
       </section>
 
@@ -23,7 +21,7 @@
 
 <script>
     export default{
-        name:"HOME",
+        name:"home",
         data:function(){
             return{
             username:localStorage.getItem('username') || 'none'
@@ -34,9 +32,10 @@
     methods:{
       veryfyAuth: function(){
         this.is_auth =  localStorage.getItem('isAuth') || false;
+
         if(this.is_auth == false){
 
-          this.$router.push({name:"LogIn"})
+          this.$router.push({name:"logIn"})
 
         }else{
 

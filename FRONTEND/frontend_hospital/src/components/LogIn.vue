@@ -6,11 +6,10 @@
             <input class="controls"  v-model="user.username" type="text" name="username" id="username" placeholder="Ingrese Identificacion" >
             <input class="controls" v-model="user.password"  type="password" name="password" id="password" placeholder="Username" >
   
-             <div class="button">
-                <button v-if="!is_auth" v-on:click="loadSingUp"   type="submit" class="btn btn-primary">LOGIN</button>
+            <div class="button">
+                <button v-if="!is_auth" v-on:click="loadLogIn"   type="submit" class="btn btn-primary">LOGIN</button>
                 <button v-if="!is_auth"  v-on:click="loadSingUp"   type="button" class="btn btn-primary">CREAR</button>
-                <button v-if="is_auth"   v-on:click="logOut"      type="button" class="btn btn-danger">SALIR</button>
-             </div>
+            </div>
         </form>
       </section>
     </div>
@@ -20,7 +19,8 @@
     import axios from 'axios';
 
     export default{
-        name: "LogIn",
+
+        name: "logIn",
         data:function(){
             return{
                 user:{
@@ -55,14 +55,18 @@
                         alert("Error 401 :: usuario y Contraseña Incorrectas");
                     }
 
-                });
+                }                
+                
+                )
+            },
 
+            loadSingUp:function(){
+                this.$router.push({name:"signUp"})
             }
+            
         }
 
-    }    
-
-    
+    }        
   </script>
   
   

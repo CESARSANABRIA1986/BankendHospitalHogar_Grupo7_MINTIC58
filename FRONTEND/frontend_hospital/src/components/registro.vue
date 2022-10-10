@@ -1,121 +1,117 @@
 <template>
 
-    
-    <form v-on:submit.prevent="processSignUp">
-    
-    </form>
     <section class="form-register">
         <h3> Formulario Regristro Usuario</h3>
 
-        <input class="controls" type="number" name="identificacion" id="identificacion" placeholder="Ingrese Identificacion" >
-        <input class="controls" type="text" name="username" id="username" placeholder="Username" >
-        <input class="controls" type="password" name="password" id="password" placeholder="Contraseña" >
-        <input class="controls" type="text" name="primerNombre" id="primerNombre" placeholder="Premier Nombre" >
-        <input class="controls" type="text" name="segundoNombre" id="segundoNombre" placeholder="Segundo Nombre" >
-        <input class="controls" type="tel" name="celular" id="celular" placeholder="Celular" >
+        <form v-on:submit.prevent="processSignUp">
+            <input class="controls" type="number"   v-model="user.id" name="id" id="id" placeholder="Ingrese Identificacion" >
+            <input class="controls" type="text"     v-model="user.username" name="username" id="username" placeholder="Username" >
+            <input class="controls" type="password" v-model="user.password" name="password" id="password" placeholder="Contraseña" >
+            <input class="controls" type="text"     v-model="user.primerNombre" name="primerNombre" id="primerNombre" placeholder="Premier Nombre" >
+            <input class="controls" type="text"     v-model="user.segundoNombre"  name="segundoNombre" id="segundoNombre" placeholder="Segundo Nombre" >
+            <input class="controls" type="text"     v-model="user.primerApellido"  name="primerApellido" id="primerApellido" placeholder="Primer Apellido" >
+            <input class="controls" type="text"     v-model="user.segundoApellido"  name="segundoApellido" id="segundoApellido" placeholder="Segundo Apellido" >
+            <input class="controls" type="tex"      v-model="user.celular" name="celular" id="celular" placeholder="Celular" >
+            <input class="controls" type="text"     v-model="user.pais" name="pais" id="pais" placeholder="Pais" >
+            <input class="controls" type="text"     v-model="user.departamento" name="departamento" id="departamento" placeholder="Departamento" >
+            <input class="controls" type="text"     v-model="user.municipio" name="municipio" id="municipio" placeholder="Municipio" >
+            <input class="controls" type="text"     v-model="user.barrio" name="barrio" id="barrio" placeholder="Barrio" >
+            <input class="controls" type="text"     v-model="user.direccion" name="direccion" id="direccion" placeholder="Direccion" >
+            <input class="controls" type="email"    v-model="user.email" name="email" id="email" placeholder="Email / Correo Electronico" >
+            <input class="controls" type="text"     v-model="user.account.especializacion" name="especializacion" id="especializacion" placeholder="Especializacion" >
+            <input class="controls" type="text"     v-model="user.account.descripcion" name="descripcion" id="descripcion" placeholder="Descripciòn" >
 
-        <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">Pais</label>
-            <select class="form-select" id="pais">
-              <option selected>Pais</option>
-              <option value="1">Colombia</option>
-              <option value="2">Venezuela</option>
-              <option value="3">Brasil</option>
-              <option value="4">Ecuador</option>
-              <option value="5">Peru</option>
-              <option value="6">Panama</option>
-              <option value="7">Argentina</option>
-              <option value="8">Chile</option>
-              <option value="9">Bolivia</option>
-              <option value="10">Uruguay</option>
-            </select>
-        </div>
+            <button v-if="!is_auth"  v-on:click="logOut"  type="button" class="btn btn-danger">SALIR</button>
 
-        <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">Departamento</label>
-            <select class="form-select" id="departamento">
-              <option selected>Departamento</option>
-              <option value="1">Amazonas</option>
-              <option value="2">Antioquia</option>
-              <option value="3">Arauca</option>
-              <option value="4">Atlántico</option>
-              <option value="5">Bogotá</option>
-              <option value="6">Bolívar</option>
-              <option value="7">Boyacá</option>
-              <option value="8">Caldas</option>
-              <option value="9">Caquetá</option>
-              <option value="10">Casanare</option>
-              <option value="11">Cauca</option>
-              <option value="12">Cesar</option>
-              <option value="13">Chocó</option>
-              <option value="14">Córdoba</option>
-              <option value="15">Cundinamarca</option>
-              <option value="16">Guainía</option>
-              <option value="17">Guaviare</option>
-              <option value="18">Huila</option>
-              <option value="19">La Guajira</option>
-              <option value="20">Magdalena</option>
-              <option value="21">Meta</option>
-              <option value="22">Nariño</option>
-              <option value="23">Norte de Santander</option>
-              <option value="24">Putumayo</option>
-              <option value="25">Quindío</option>
-              <option value="26">Risaralda</option>
-              <option value="27">San Andrés y Providencia</option>
-              <option value="28">Santander</option>
-              <option value="29">Sucre</option>
-              <option value="30">Tolima</option>
-              <option value="31">Valle del Cauca</option>
-              <option value="32">Vaupés</option>
-              <option value="33">Vichada</option>
-            </select>
-        </div>
+            <button type="submit"  class="btn btn-danger">GUARDAR</button>
 
-        <input class="controls" type="text" name="municipio" id="municipio" placeholder="Municipio" >
-        <input class="controls" type="text" name="barrio" id="barrio" placeholder="Barrio" >
-        <input class="controls" type="text" name="direccion" id="direccion" placeholder="Direccion" >
-        <input class="controls" type="email" name="email" id="email" placeholder="Email / Correo Electronico" >
-        <input class="controls" type="text" name="especializacion" id="especializacion" placeholder="Especializacion" >
-        <input class="controls" type="date" name="fechaIngreso" id="fechaIngreso" placeholder="Fecha Ingreso" >
-        <input class="controls" type="text" name="descripcion" id="descripcion" placeholder="Descripciòn" >
-
-        <div class="button">
-        <button type="button" class="btn btn-primary">CREAR</button>
-        <button type="button" class="btn btn-success">ACTUALIZAR</button>
-        <button type="button" class="btn btn-danger">GUARDAR</button>
-        <button type="button" class="btn btn-dark">ROL</button>
-        </div>
+            <button type="button" class="btn btn-dark">ROL</button>
+        
+        </form>
 
     </section>
 
-    <div>
-        <footer>
-            <p>Mision TIC 2022 Universidad Nacional Colombia</p>
-            <p> Ing. Cesar Augusto Sanabria</p>
-        </footer>
-    </div>
-
-    
 </template>
   
-  
+
 <script>
 
-    import { functionTypeAnnotation } from '@babel/types';
+    import axios from 'axios';
 
     export default{
 
-        name:"SignUp",
+        name:"signUp",
         data:function(){
-
+            return{
+                user:{
+                    id: 0,
+                    username: "",
+                    password: "",
+                    primerNombre: "",
+                    segundoNombre: "",
+                    primerApellido: "",
+                    segundoApellido: "",
+                    celular: "",
+                    pais: "",
+                    departamento: "",
+                    municipio: "",
+                    barrio: "",
+                    direccion: "",
+                    email: "",
+                    account: [
+                        {
+                            especializacion: "si",
+                            descripcion: "si",
+                        }
+                    ]
+                }
+            }
         },
 
         methods:{
+            processSignUp: function() {
+                axios.post(
+                    "http://127.0.0.1:8000/usuario/",
+                    this.user,
+                    {headers:{}}
+                )
+                .then((result)=>{
+                    let dataSignUp={
+                        username: this.user.username,
+                        token_access: result.data.access,
+                        token_refresh: result.data.refresh
+                    }
 
-            processSignUp:function(){
+                    this.$emit('completedSignUp', dataSignUp)
+
+                })
+
+                .catch((error)=>{
+                    console.log(error)
+                    alert("error de registro del Usuario")
+
+                });
                 
-            }
+            },
 
+            loadSingUp:function(){
+                this.$router.push({name:"signUp"})
+            },
+            
+            veryfyAuth: function(){
+                this.is_auth =  localStorage.getItem('isAuth') || false;
+                if(this.is_auth == false){
+                    this.$router.push({name:"logIn"})
+                }else{
+                    this.$router.push({name:"home"})
+                }
+            },
+            
+            
+            logOut: function(){
+                localStorage.clear();   
+                 this.veryfyAuth();
+                }
         }
 
     }

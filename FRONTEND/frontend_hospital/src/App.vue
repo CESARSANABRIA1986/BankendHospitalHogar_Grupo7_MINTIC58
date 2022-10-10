@@ -1,9 +1,8 @@
 <template>
+
 <div>
   <div>
-    <router-view v-on:completedLogIn="completedLogIn"
-    v-on:completedSignUp="completedSignUp"
-    >
+    <router-view v-on:completedLogIn="completedLogIn" v-on:completedSignUp="completedSignUp">
     </router-view>
   </div>
 
@@ -17,11 +16,7 @@
 
 </div>
 
-
-
-
 </template>
-
 
 
 <script>
@@ -43,7 +38,7 @@
         this.is_auth =  localStorage.getItem('isAuth') || false;
         if(this.is_auth == false){
 
-          this.$router.push({name:"LogIn"})
+          this.$router.push({name:"logIn"})
 
         }else{
 
@@ -55,8 +50,7 @@
 
       loadLogIn: function(){
 
-        this.$router.push({name:"LogIn"})
-        
+        this.$router.push({name:"logIn"})
         
       },
 
@@ -75,10 +69,12 @@
 
       completedSignUp: function(data){
 
-
+        alert( "Usuario Registrado Exitoso !!" )
+        //this.completedLogIn(data)
 
       },
 
+      
       logOut: function(){
 
         localStorage.clear();
@@ -87,11 +83,10 @@
 
       }, 
 
-       loadSingUp:function(){
 
-        this.$route.push({name:"SignUp"})
-
-       }
+      loadSingUp:function(){
+        this.$router.push({name:"signUp'"})
+      }
 
     },
 

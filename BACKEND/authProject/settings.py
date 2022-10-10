@@ -89,6 +89,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
     'http://localhot:7878',
     'http://www.front.aws.com',
+    'http://localhost:8081',
+
 )
 
 
